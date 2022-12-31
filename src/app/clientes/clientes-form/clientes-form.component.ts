@@ -10,11 +10,18 @@ import { Cliente } from '../cliente'
 export class ClientesFormComponent {
 
   cliente: Cliente = new Cliente;
+  nome:string = 'Fran';
 
-  constructor() { }
+  constructor() {
+    this.cliente = new Cliente();
+    this.cliente.nome = 'Guilherme';
+   }
 
   ngOnInit(): void {
+  }
 
+  clicar(){
+    console.log('Cliquei');
   }
 
 }
