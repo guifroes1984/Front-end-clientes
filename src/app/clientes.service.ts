@@ -16,19 +16,13 @@ export class ClientesService {
   salvar(cliente:Cliente) : Observable<Cliente> {
     return this.http.post<Cliente>('http://localhost:8080/api/clientes' , cliente);
   }
-/*
- getClientes() : Observable<Cliente[]> {
-    return null;
- }
- */
 
-getClientes() : Cliente[] {
-  let cliente = new Cliente();
-  cliente.id = 1;
-  cliente.nome = 'Guilherme';
-  cliente.dataCadastro = '02/01/2022';
-  cliente.cpf = '32938645899';
-  return [cliente]
-}
+ getClientes() : Observable<Cliente[]> {
+    return this.http.get<Cliente[]>('http://localhost:8080/api/clientes');
+ }
+
+ getClienteById(id: number) :  Observable<Cliente> {
+  return this.http.get<any>(`http://localhost:8080/api/clientes/${id}`);
+ }
 
 }
